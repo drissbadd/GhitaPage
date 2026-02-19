@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr. Ghita Tnacheri Ouazzani – Dentiste</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --red: #C0272D;
+    --red-dark: #8B1A1E;
+    --red-light: #e8484e;
+    --white: #FAFAFA;
+    --cream: #F5F0EE;
+    --text: #1a1a1a;
+  }
+
+  body {
+    background: var(--white);
+    font-family: 'Jost', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    overflow-x: hidden;
+  }
+
+  /* Subtle background pattern */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse at 20% 20%, rgba(192,39,45,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 80%, rgba(192,39,45,0.04) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .card {
+    position: relative;
+    z-index: 1;
+    background: #fff;
+    border-radius: 24px;
+    max-width: 400px;
+    width: 100%;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.12), 0 4px 16px rgba(192,39,45,0.08);
+    animation: rise 0.7s cubic-bezier(0.22,1,0.36,1) both;
+  }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(30px) scale(0.97); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  /* Header band */
+  .header {
+    background: var(--red);
+    padding: 40px 32px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::before {
+    content: '✦';
+    position: absolute;
+    top: -30px; right: -20px;
+    font-size: 120px;
+    color: rgba(255,255,255,0.05);
+    line-height: 1;
+  }
+
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; left: 0; right: 0;
+    height: 30px;
+    background: #fff;
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+  }
+
+  .tooth-icon {
+    font-size: 36px;
+    margin-bottom: 12px;
+    display: block;
+    animation: pulse 3s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+  }
+
+  .header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+  }
+
+  .header h1 em {
+    display: block;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 22px;
+    opacity: 0.85;
+  }
+
+  .badge {
+    display: inline-block;
+    margin-top: 10px;
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+
+  /* Links section */
+  .links {
+    padding: 28px 28px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .link-btn {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    border-radius: 14px;
+    text-decoration: none;
+    color: var(--text);
+    background: var(--cream);
+    border: 1.5px solid transparent;
+    transition: all 0.25s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .link-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--red);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    border-radius: inherit;
+  }
+
+  .link-btn:hover {
+    border-color: var(--red);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(192,39,45,0.15);
+  }
+
+  .link-btn:hover::before { opacity: 0.05; }
+
+  .link-btn:active { transform: translateY(0); }
+
+  .icon-wrap {
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 20px;
+    position: relative; z-index: 1;
+  }
+
+  .icon-wrap.insta { background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+  .icon-wrap.whatsapp { background: #25D366; }
+  .icon-wrap.maps { background: var(--red); }
+
+  .link-text { position: relative; z-index: 1; }
+  .link-text strong { display: block; font-size: 14px; font-weight: 500; color: var(--text); }
+  .link-text span { font-size: 12px; color: #888; font-weight: 300; }
+
+  .arrow {
+    margin-left: auto;
+    color: #ccc;
+    font-size: 16px;
+    position: relative; z-index: 1;
+    transition: transform 0.2s, color 0.2s;
+  }
+
+  .link-btn:hover .arrow { transform: translateX(4px); color: var(--red); }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 0 28px 28px;
+  }
+
+  .divider {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 18px;
+  }
+
+  .divider::before, .divider::after {
+    content: ''; flex: 1; height: 1px; background: #eee;
+  }
+
+  .divider span {
+    font-size: 10px; color: #bbb; letter-spacing: 0.1em; text-transform: uppercase;
+  }
+
+  .footer p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: #aaa;
+    letter-spacing: 0.02em;
+  }
+
+  .footer-logo {
+    font-size: 18px;
+    color: var(--red);
+    opacity: 0.3;
+    margin-top: 12px;
+  }
+
+  /* Staggered animations */
+  .link-btn:nth-child(1) { animation: fadeUp 0.5s 0.2s cubic-bezier(0.22,1,0.36,1) both; }
+  .link-btn:nth-child(2) { animation: fadeUp 0.5s 0.35s cubic-bezier(0.22,1,0.36,1) both; }
+  .link-btn:nth-child(3) { animation: fadeUp 0.5s 0.5s cubic-bezier(0.22,1,0.36,1) both; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="header">
+    <span class="tooth-icon">🦷</span>
+    <h1>Dr. Ghita<br><em>Tnacheri Ouazzani</em></h1>
+    <span class="badge">Chirurgien-Dentiste</span>
+  </div>
+
+  <div class="links">
+    <a class="link-btn" href="https://www.instagram.com/drghitaouazzani/" target="_blank">
+      <div class="icon-wrap insta">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="2" width="20" height="20" rx="6" stroke="white" stroke-width="2"/>
+          <circle cx="12" cy="12" r="4" stroke="white" stroke-width="2"/>
+          <circle cx="17.5" cy="6.5" r="1" fill="white"/>
+        </svg>
+      </div>
+      <div class="link-text">
+        <strong>Instagram</strong>
+        <span>@drghitaouazzani</span>
+      </div>
+      <span class="arrow">›</span>
+    </a>
+
+    <a class="link-btn" href="https://wa.me/212660220020" target="_blank">
+      <div class="icon-wrap whatsapp">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C6.477 2 2 6.477 2 12c0 1.85.504 3.58 1.38 5.065L2 22l5.085-1.334A9.95 9.95 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18a7.95 7.95 0 01-4.055-1.107l-.29-.173-3.017.791.805-2.94-.19-.302A7.95 7.95 0 014 12c0-4.418 3.582-8 8-8s8 3.582 8 8-3.582 8-8 8zm4.38-5.8c-.24-.12-1.42-.7-1.64-.78-.22-.08-.38-.12-.54.12-.16.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12-1.014-.374-1.932-1.192-.714-.636-1.196-1.42-1.336-1.66-.14-.24-.014-.37.105-.49.108-.107.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.194-.468-.392-.404-.54-.412l-.46-.008c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.693 2.586 4.103 3.626.574.248 1.02.396 1.37.506.576.184 1.1.158 1.514.096.462-.07 1.42-.58 1.62-1.14.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28z"/>
+        </svg>
+      </div>
+      <div class="link-text">
+        <strong>WhatsApp</strong>
+        <span>+212 660 220 020</span>
+      </div>
+      <span class="arrow">›</span>
+    </a>
+
+    <a class="link-btn" href="https://www.google.com/maps/place/Jardin+Zoologique+de+Rabat/@33.9605329,-6.9053093,15.25z/data=!4m6!3m5!1s0xda712c978566615:0x169daf5f0001b466!8m2!3d33.955304!4d-6.89435!16s%2Fm%2F0k70k_c?entry=ttu&g_ep=EgoyMDI2MDIxNy4wIKXMDSoASAFQAw%3D%3D" target="_blank">
+      <div class="icon-wrap maps">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+        </svg>
+      </div>
+      <div class="link-text">
+        <strong>Notre Localisation</strong>
+        <span>Voir sur Google Maps</span>
+      </div>
+      <span class="arrow">›</span>
+    </a>
+  </div>
+
+  <div class="footer">
+    <div class="divider"><span>Rabat, Maroc</span></div>
+    <p>Votre sourire, notre priorité.</p>
+    <div class="footer-logo">✦</div>
+  </div>
+</div>
+
+</body>
+</html>
